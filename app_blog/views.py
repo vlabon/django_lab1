@@ -48,8 +48,7 @@ class ArticleList(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(ArticleList, self).get_context_data(*args, **kwargs)
         try:
-            context['category'] = Category.objects.get(
-                slug=self.kwargs.get('slug'))
+            context['category'] = Category.objects.get(slug=self.kwargs.get('slug'))
         except Exception:
             context['category'] = None
 
