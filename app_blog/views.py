@@ -42,7 +42,7 @@ class ArticleDetail(DateDetailView):
 
 class ArticleList(ListView):
     model = Article
-    template_name = 'articles_list.html'
+    template_name = 'articles-list.html'
     context_object_name = 'items'
 
     def get_context_data(self, *args, **kwargs):
