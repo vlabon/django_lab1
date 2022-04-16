@@ -10,7 +10,7 @@ from django.utils import timezone
 # Create your models here.
 class Category(models.Model):
     category = models.CharField(u'Категорія', max_length=250, help_text=u'Максимум 250 символів')
-    slug = models.SlugField(u'Слаг', default='slug_default')
+    slug = models.SlugField(u'Слаг')
     
     class Meta:
         verbose_name = u'Категрія для публікацій'

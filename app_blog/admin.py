@@ -6,10 +6,11 @@ from .forms import ArticleImageForm
 
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('category',)
+    list_display = ('category', 'slug',)
+    prepopulated_fields = {'slug': ('category',)}
     fieldsets = (
         ('', {
-            'fields': ('category', ),
+            'fields': ('category', 'slug',),
         }),
     )
 admin.site.register(Category, CategoryAdmin)
@@ -26,15 +27,15 @@ class ArticleImageInline(admin.TabularInline):
     )
     
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'pub_date', 'slug', 'main_page')
+    list_display = ('title', 'pub_date', 'slug', 'category', 'main_page',)
     inlines = [ArticleImageInline]
     multiupload_form = True
     multiupload_list = False
-    prepopulated_fields = {'slug': ('title',)}
+    prepopulated_fields = {"slug": ("title",)}
     raw_id_fields = ('category', )
     fieldsets = (
         ('', {
-            'fields': ('pub_date', 'title', 'description', 'main_page'),
+            'fields': ('pub_date', 'title', 'description', 'category', 'main_page',),
         }),
         ((u'Додатково'), {
             'classes': ('grp-collapse grp-closed',),
